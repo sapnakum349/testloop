@@ -1,0 +1,893 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShieldX Antivirus - Stay Protected</title>
+<meta name="description" content="ShieldX Antivirus website template for digital security and privacy.">
+
+<style>
+:root {
+  --primary: #5b50f5;
+  --primary-dark: #4438ca;
+  --dark: #11162a;
+  --text: #687087;
+  --light: #f5f6ff;
+  --green: #10b981;
+  --border: #e7e8f0;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+
+body {
+  font-family: Arial, sans-serif;
+  color: var(--dark);
+  line-height: 1.6;
+}
+
+a { text-decoration: none; color: inherit; }
+button { font: inherit; cursor: pointer; }
+.container { width: min(1120px, 90%); margin: auto; }
+
+header {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+}
+
+nav {
+  min-height: 76px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.logo span { color: var(--primary); }
+
+.logo-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  background: var(--primary);
+  color: white;
+  border-radius: 11px;
+  margin-right: 6px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.nav-links a:hover { color: var(--primary); }
+
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  background: var(--primary);
+  color: white;
+  padding: 13px 22px;
+  font-weight: 700;
+  transition: .2s;
+}
+
+.btn:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+.btn-light {
+  background: white;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+}
+
+.btn-light:hover { color: white; }
+
+.menu-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  font-size: 26px;
+}
+
+/* Hero */
+.hero {
+  padding: 90px 0;
+  background:
+    radial-gradient(circle at 85% 20%, #e4e2ff, transparent 32%),
+    linear-gradient(120deg, #fbfbff, #f0f0ff);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  align-items: center;
+  gap: 55px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 7px 13px;
+  border-radius: 25px;
+  background: #e9e7ff;
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+h1 {
+  font-size: clamp(40px, 5vw, 64px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+  margin-bottom: 22px;
+}
+
+.highlight { color: var(--primary); }
+
+.hero-copy {
+  color: var(--text);
+  font-size: 17px;
+  max-width: 540px;
+  margin-bottom: 28px;
+}
+
+.hero-buttons { display: flex; flex-wrap: wrap; gap: 12px; }
+
+.trust {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--text);
+}
+
+.trust-icon {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  background: #dcfce9;
+  color: #078b59;
+  border-radius: 50%;
+  font-size: 20px;
+}
+
+.security-card {
+  background: white;
+  border: 1px solid #e5e4ff;
+  border-radius: 25px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 25px 70px #5b50f51c;
+}
+
+.status {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 25px;
+  background: #dcfce9;
+  color: #078b59;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.shield {
+  width: 145px;
+  height: 165px;
+  margin: 25px auto;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #827aff, #493ddd);
+  color: white;
+  font-size: 65px;
+  clip-path: polygon(50% 0, 94% 18%, 88% 65%, 70% 86%, 50% 100%, 30% 86%, 12% 65%, 6% 18%);
+}
+
+.security-card h3 { font-size: 23px; margin-bottom: 8px; }
+.security-card p { font-size: 13px; color: var(--text); }
+
+.mini-progress {
+  height: 7px;
+  background: #ecebff;
+  border-radius: 10px;
+  margin: 22px 0;
+  overflow: hidden;
+}
+
+.mini-progress div {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--green));
+}
+
+.card-stats {
+  display: flex;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.card-stats strong { display: block; font-size: 19px; }
+.card-stats small { color: var(--text); font-size: 11px; }
+
+/* General sections */
+section { padding: 80px 0; }
+
+.heading {
+  text-align: center;
+  max-width: 650px;
+  margin: 0 auto 42px;
+}
+
+.heading h2 {
+  font-size: clamp(30px, 4vw, 43px);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+.heading p { color: var(--text); }
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 30px 0;
+}
+
+.stat { text-align: center; }
+.stat h3 { font-size: 31px; color: var(--primary); }
+.stat p { color: var(--text); font-size: 14px; }
+
+.features, .pricing { background: var(--light); }
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.feature {
+  padding: 28px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  transition: .25s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px #22244d0e;
+}
+
+.feature-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: #edecff;
+  font-size: 26px;
+  margin-bottom: 18px;
+}
+
+.feature h3 { margin-bottom: 9px; font-size: 19px; }
+.feature p { color: var(--text); font-size: 14px; }
+
+/* Scanner demo */
+.scanner {
+  max-width: 700px;
+  margin: auto;
+  padding: 32px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 15px 45px #17193a0c;
+}
+
+.scanner-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.demo-badge {
+  background: #fff2cc;
+  color: #93610a;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.scan-display { text-align: center; padding: 30px 0; }
+
+.scan-circle {
+  width: 105px;
+  height: 105px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border: 7px solid #e7e5ff;
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  font-size: 32px;
+}
+
+.scan-circle.running { animation: rotate 1s linear infinite; }
+
+@keyframes rotate { to { transform: rotate(360deg); } }
+
+.scan-display h3 { font-size: 23px; margin-bottom: 8px; }
+.scan-display p { color: var(--text); font-size: 14px; }
+
+.progress-track {
+  height: 9px;
+  background: #ededf7;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 20px 0 8px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--primary), var(--green));
+  transition: width .2s;
+}
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.scan-button { width: 100%; margin-top: 23px; }
+.scan-button:disabled { opacity: .65; cursor: wait; }
+
+.scan-result {
+  display: none;
+  margin-top: 18px;
+  padding: 14px;
+  border-radius: 10px;
+  background: #e7fff3;
+  color: #08784f;
+  font-size: 13px;
+}
+
+/* Pricing */
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  align-items: stretch;
+}
+
+.price-card {
+  position: relative;
+  padding: 30px;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 19px;
+}
+
+.price-card.popular { border: 2px solid var(--primary); }
+
+.popular-tag {
+  position: absolute;
+  right: 18px;
+  top: -14px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  background: var(--primary);
+  color: white;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.price-card h3 { font-size: 21px; }
+.price-description { color: var(--text); font-size: 13px; margin: 8px 0 18px; }
+.price { font-size: 38px; font-weight: 800; }
+.price small { color: var(--text); font-size: 13px; font-weight: 400; }
+
+.price-card ul { list-style: none; margin: 24px 0; }
+.price-card li { font-size: 14px; margin: 12px 0; }
+.price-card li::before { content: "?"; color: var(--green); font-weight: 900; margin-right: 9px; }
+.price-card .btn { width: 100%; text-align: center; }
+
+/* FAQ */
+.faq-list { max-width: 760px; margin: auto; }
+.faq-item { border-bottom: 1px solid var(--border); }
+
+.faq-question {
+  width: 100%;
+  padding: 21px 0;
+  border: 0;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.faq-question span { color: var(--primary); font-size: 22px; }
+.faq-answer { display: none; color: var(--text); font-size: 14px; padding-bottom: 20px; }
+.faq-item.active .faq-answer { display: block; }
+
+/* Call to action */
+.cta { padding-top: 0; }
+
+.cta-box {
+  padding: 55px 25px;
+  border-radius: 25px;
+  background: linear-gradient(120deg, #625bff, #4438ca);
+  text-align: center;
+  color: white;
+}
+
+.cta-box h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 12px; }
+.cta-box p { color: #e5e4ff; margin-bottom: 24px; }
+.cta-box .btn { background: white; color: var(--primary-dark); }
+
+/* Footer */
+footer { background: #111528; color: white; padding: 45px 0 20px; }
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 35px;
+  padding-bottom: 30px;
+}
+
+.footer-about p { color: #a8afc5; font-size: 14px; margin-top: 15px; max-width: 350px; }
+footer h4 { margin-bottom: 15px; }
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #a8afc5;
+  font-size: 14px;
+}
+
+.footer-links a:hover { color: white; }
+
+.copyright {
+  border-top: 1px solid #30354a;
+  padding-top: 20px;
+  color: #a8afc5;
+  font-size: 12px;
+  text-align: center;
+}
+
+@media (max-width: 850px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+  .security-card { max-width: 500px; width: 100%; margin: auto; }
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  .pricing-grid { grid-template-columns: 1fr; max-width: 500px; margin: auto; gap: 28px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 600px) {
+  nav { min-height: 68px; }
+  .menu-toggle { display: block; }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 68px;
+    left: 0;
+    width: 100%;
+    padding: 22px 5%;
+    background: white;
+    border-bottom: 1px solid var(--border);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links .btn { width: 100%; text-align: center; }
+  .hero { padding: 65px 0; }
+  h1 { letter-spacing: -1px; }
+  section { padding: 60px 0; }
+  .feature-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); gap: 25px; }
+  .scanner { padding: 22px; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo"><span class="logo-icon">?</span>Shield<span>X</span></a>
+
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu"
+      aria-expanded="false">?</button>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#scanner">Scanner</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+      <a href="#pricing" class="btn">Get Protected ?</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="tag">? NEXT-GENERATION SECURITY</span>
+        <h1>Your digital world.<br><span class="highlight">Our protection.</span></h1>
+        <p class="hero-copy">
+          Discover a smarter approach to digital security. Explore privacy,
+          web safety, and malware protection features in one clean experience.
+        </p>
+        <div class="hero-buttons">
+          <a href="#pricing" class="btn">Explore Plans ?</a>
+          <a href="#features" class="btn btn-light">Discover Features</a>
+        </div>
+        <div class="trust">
+          <div class="trust-icon">?</div>
+          <div><strong>Security starts here</strong><br>Built around your digital safety</div>
+        </div>
+      </div>
+
+      <div class="security-card">
+        <span class="status">? DEMO SECURITY STATUS</span>
+        <div class="shield">?</div>
+        <h3>Your Digital Shield</h3>
+        <p>A visual preview of an antivirus dashboard.</p>
+        <div class="mini-progress"><div></div></div>
+        <div class="card-stats">
+          <div><strong>24/7</strong><small>Security concept</small></div>
+          <div><strong>3-in-1</strong><small>Feature groups</small></div>
+          <div><strong>100%</strong><small>Responsive design</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="stats">
+      <div class="stat"><h3>01</h3><p>Privacy first</p></div>
+      <div class="stat"><h3>02</h3><p>Smart protection</p></div>
+      <div class="stat"><h3>03</h3><p>Easy controls</p></div>
+      <div class="stat"><h3>24/7</h3><p>Security awareness</p></div>
+    </div>
+  </div>
+
+  <section class="features" id="features">
+    <div class="container">
+      <div class="heading">
+        <span class="tag">POWERFUL FEATURES</span>
+        <h2>Security made simple</h2>
+        <p>Explore essential features a modern antivirus product can offer.</p>
+      </div>
+
+      <div class="feature-grid">
+        <article class="feature">
+          <div class="feature-icon">???</div>
+          <h3>Threat Protection</h3>
+          <p>Designed to detect and block malware using a real security engine.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">??</div>
+          <h3>Privacy Protection</h3>
+          <p>Keep privacy in focus with safer browsing and privacy controls.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">??</div>
+          <h3>Web Protection</h3>
+          <p>Help identify phishing attempts, unsafe links, and suspicious websites.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">?</div>
+          <h3>Lightweight Design</h3>
+          <p>Enjoy a clean, simple interface designed around ease of use.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">??</div>
+          <h3>File Security</h3>
+          <p>Real antivirus software can analyze files using detection technology.</p>
+        </article>
+        <article class="feature">
+          <div class="feature-icon">??</div>
+          <h3>Security Reports</h3>
+          <p>Present scan results, threat details, and security information clearly.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="scanner">
+    <div class="container">
+      <div class="heading">
+        <span class="tag">INTERACTIVE DEMO</span>
+        <h2>Try the security scanner</h2>
+        <p>This simulated scanner demonstrates the interface only. It does not inspect your files.</p>
+      </div>
+
+      <div class="scanner">
+        <div class="scanner-head">
+          <h3>ShieldX Security Scan</h3>
+          <span class="demo-badge">SIMULATION ONLY</span>
+        </div>
+        <div class="scan-display">
+          <div class="scan-circle" id="scanCircle">?</div>
+          <h3 id="scanTitle">Ready to scan</h3>
+          <p id="scanMessage">Start a simulated scan to preview the interface.</p>
+        </div>
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="progress-info">
+          <span id="progressText">Waiting to start</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <button class="btn scan-button" id="scanButton">? Start Demo Scan</button>
+        <div class="scan-result" id="scanResult" role="status"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="heading">
+        <span class="tag">SIMPLE PLANS</span>
+        <h2>Choose your protection</h2>
+        <p>Sample prices and proposed features for the website design.</p>
+      </div>
+
+      <div class="pricing-grid">
+        <article class="price-card">
+          <h3>Basic</h3>
+          <p class="price-description">For everyday users</p>
+          <div class="price">?0 <small>/ forever</small></div>
+          <ul>
+            <li>Security awareness tips</li>
+            <li>Privacy guidance</li>
+            <li>Online safety resources</li>
+            <li>Website demo access</li>
+          </ul>
+          <a href="#scanner" class="btn btn-light">Try Demo</a>
+        </article>
+
+        <article class="price-card popular">
+          <span class="popular-tag">POPULAR</span>
+          <h3>Premium</h3>
+          <p class="price-description">For personal devices</p>
+          <div class="price">?499 <small>/ year*</small></div>
+          <ul>
+            <li>Proposed malware protection</li>
+            <li>Proposed web protection</li>
+            <li>Privacy tools concept</li>
+            <li>Security reports concept</li>
+          </ul>
+          <a href="#contact" class="btn">Choose Premium</a>
+        </article>
+
+        <article class="price-card">
+          <h3>Family</h3>
+          <p class="price-description">For multiple users</p>
+          <div class="price">?999 <small>/ year*</small></div>
+          <ul>
+            <li>Multi-device protection concept</li>
+            <li>Family safety guidance</li>
+            <li>Privacy education resources</li>
+            <li>Central dashboard concept</li>
+          </ul>
+          <a href="#contact" class="btn btn-light">Choose Family</a>
+        </article>
+      </div>
+
+      <p style="text-align:center;color:#687087;font-size:12px;margin-top:25px">
+        *Illustrative prices only. No subscription or payment service is connected.
+      </p>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <div class="heading">
+        <span class="tag">HAVE QUESTIONS?</span>
+        <h2>Frequently asked questions</h2>
+        <p>Everything you need to know about this website demo.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            What is ShieldX Antivirus? <span>+</span>
+          </button>
+          <div class="faq-answer">ShieldX is a sample antivirus landing-page template for demonstrating a security product website.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Does the scanner find real viruses? <span>+</span>
+          </button>
+          <div class="faq-answer">No. It only animates a progress bar. It does not scan files, detect malware, or protect your device.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Does this work on mobile devices? <span>+</span>
+          </button>
+          <div class="faq-answer">Yes. The page layout adapts to mobile phones, tablets, laptops, and desktop browsers.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            Can customers buy a plan here? <span>+</span>
+          </button>
+          <div class="faq-answer">Not yet. Real subscriptions require a backend, payment provider, and secure order processing.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            How can I make it a real antivirus product? <span>+</span>
+          </button>
+          <div class="faq-answer">You need a real security engine, malware detection technology, secure updates, testing, and platform-specific software. A website alone cannot provide antivirus protection.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta" id="contact">
+    <div class="container">
+      <div class="cta-box">
+        <h2>Your security journey starts here.</h2>
+        <p>Build a safer digital experience with ShieldX.</p>
+        <a class="btn" href="mailto:hello@example.com?subject=ShieldX%20Enquiry">Contact Us ?</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a href="#home" class="logo"><span class="logo-icon">?</span>Shield<span>X</span></a>
+        <p>A modern antivirus website template focused on security awareness, privacy, and user experience.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="#home">Home</a>
+          <a href="#features">Features</a>
+          <a href="#scanner">Scanner</a>
+          <a href="#pricing">Pricing</a>
+        </div>
+      </div>
+      <div>
+        <h4>Information</h4>
+        <div class="footer-links">
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+          <a href="#features">Security Features</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">
+      © <span id="year"></span> ShieldX Antivirus. Website demo template; no real protection is provided.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const menuToggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  menuToggle.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.textContent = open ? "?" : "?";
+  });
+
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      menuToggle.setAttribute("aria-expanded", "false");
+      menuToggle.textContent = "?";
+    });
+  });
+
+  // FAQ accordion
+  document.querySelectorAll(".faq-question").forEach(button => {
+    button.addEventListener("click", () => {
+      const item = button.closest(".faq-item");
+      const wasOpen = item.classList.contains("active");
+
+      document.querySelectorAll(".faq-item").forEach(faq => {
+        faq.classList.remove("active");
+        faq.querySelector(".faq-question").setAttribute("aria-expanded", "false");
+        faq.querySelector(".faq-question span").textContent = "+";
+      });
+
+      if (!wasOpen) {
+        item.classList.add("active");
+        button.setAttribute("aria-expanded", "true");
+        button.querySelector("span").textContent = "-";
+      }
+    });
+  });
+
+  // Visual scanner simulation only
+  const scanButton = document.getElementById("scanButton");
+  const scanCircle = document.getElementById("scanCircle");
+  const scanTitle = document.getElementById("scanTitle");
+  const scanMessage = document.getElementById("scanMessage");
+  const progressBar = document.getElementById("progressBar");
+  const progressText = document.getElementById("progressText");
+  const progressPercent = document.getElementById("progressPercent");
+  const scanResult = document.getElementById("scanResult");
+
+  let scanTimer = null;
+
+  scanButton.addEventListener("click", () => {
+    if (scanTimer !== null) return;
+
+    let progress = 0;
+    scanButton.disabled = true;
+    scanButton.textContent = "Scanning demo...";
+    scanCircle.classList.add("running");
+    scanCircle.textContent = "?";
+    scanTitle.textContent = "Demo scan in progress";
+    scanMessage.textContent = "Simulating progress. No files are being inspected.";
+    scanResult.style.display = "none";
+    progressBar.style.width = "0%";
+    progressText.textContent = "Initializing demo";
+    progressPercent.textContent = "0%";
+
+    scanTimer = setInterval(() => {
+      progress = Math.min(100, progress + Math.floor(Math.random() * 9) + 4);
+      progressBar.style.width = progress + "%";
+      progressPercent.textContent = progress + "%";
+
+      if (progress < 30) progressText.textContent = "Simulating startup";
+      else if (progress < 65) progressText.textContent = "Simulating file checks";
+      else if (progress < 100) progressText.textContent = "Preparing demo result";
+
+      if (progress === 100) {
+        clearInterval(scanTimer);
+        scanTimer = null;
+        scanCircle.classList.remove("running");
+        scanCircle.textContent = "?";
+        scanTitle.textContent = "Demo completed";
+        scanMessage.textContent = "The interface demonstration has finished.";
+        progressText.textContent = "Simulation complete";
+        scanResult.textContent = "Demo only: no files were scanned and no malware assessment was performed.";
+        scanResult.style.display = "block";
+        scanButton.disabled = false;
+        scanButton.textContent = "? Run Demo Again";
+      }
+    }, 180);
+  });
+
+  // Footer year
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
